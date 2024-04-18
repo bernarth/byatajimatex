@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        String @id @default(uuid())
+  email     String @unique
+  username  String @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Producto {
+  id                String @id @default(uuid())
+  codigoModelo      String @unique
+  nombrePrenda      String
+  fechaMuestreo     DateTime @default(now())
+  fechaModification DateTime @updatedAt
+  cantidad          Int
+  imagenPath        String
+  comision          Int
+  precioVenta       Int
+  precioVentaReal   Int
+  insumos           Insumo[]
+  procesos          Proceso[]
+  otros             Otro[]
+}
+
+model Insumo {
+  id String @id @default(uuid())
+  color String
+  materialTextil String
+  descripcion String 
+  proveedor String 
+  costoUnidadEnCentavos Int
+  cantidad Int
+  costoTotalEnCentavos Int
+  productoId String
+  producto Producto @relation(fields: [productoId], references: [id], onDelete: Cascade)
+}
+
+model Proceso {
+  id String @id @default(uuid())
+  areaDeTrabajo String
+  nombreEncargado String 
+  salarioPorHora Int
+  cantidadTiempo Int
+  costoTrabajoUnitario Int
+  productoId String 
+  producto Producto @relation(fields: [productoId], references: [id], onDelete: Cascade)
+}
+
+model Otro {
+  id String @id @default(uuid())
+  nombre String
+  descripcion String
+  costoTotal Int
+  productoId String
+  producto Producto @relation(fields: [productoId], references: [id], onDelete: Cascade)
+}
