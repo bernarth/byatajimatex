@@ -38,3 +38,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 `npm i --save-dev ts-node`
 
 `npm i prisma -D`
+
+`npm install --save @types/bcrypt`
