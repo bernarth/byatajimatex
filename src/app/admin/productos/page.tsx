@@ -1,5 +1,11 @@
+import { PageHeader } from "../_components/PageHeader";
+
 export default function AdminProductosPage() {
   return (
-    <h1>Productos</h1>
+    <>
+      <div className="flex justify-between items-center gap-4">
+        <PageHeader>Productos</PageHeader>
+      </div>
+    </>
   );
 }
