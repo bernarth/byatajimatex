@@ -5,7 +5,7 @@ const CURRENCY_FORMATTER = new Intl.NumberFormat("es-BO", {
 });
 
 export function formatCurrency(amount: number) {
-  return CURRENCY_FORMATTER.format(amount);
+  return CURRENCY_FORMATTER.format(amount / 10);
 }
 
 const NUMBER_FORMATTER = new Intl.NumberFormat("es-BO");
