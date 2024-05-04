@@ -54,15 +54,17 @@ function ProductosGrid() {
 
       <section className="pb-24 pt-6">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-          <div className="hidden lg:block">
+          {/* lg:block */}
+          <div className="hidden">
             Filtros
           </div>
 
           <ul className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {productos && 
-            productos.map((producto: ProductoType) => (
-              <li key={producto.id}><Producto producto={producto}/></li>
-            ))}
+              productos.map((producto: ProductoType) => 
+                <li key={producto.id}><Producto producto={producto}/></li>
+              )
+            }
           </ul>
         </div>
       </section>

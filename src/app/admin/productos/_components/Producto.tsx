@@ -1,6 +1,8 @@
 import { formatCurrency } from "@/lib/formatters";
 import { Producto as ProductoType } from "@prisma/client";
+import { SquarePen } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 function Producto({ producto }: { producto: ProductoType }) {
   return (
@@ -21,9 +23,11 @@ function Producto({ producto }: { producto: ProductoType }) {
             Precio Venta: {formatCurrency(producto.precioVenta)}
           </p>
         </div>
-        <p className="text=sm font-medium text-gray-900">
-          Precio Venta Real: {formatCurrency(producto.precioVentaReal)}
-        </p>
+        <button className="-m-2 ml-4 p-2 text-gray-700 hover:text-gray-500">
+          <Link href={`/admin/productos/${producto.id}`}>
+            <SquarePen className="h-4 w-4" /> Edit
+          </Link>
+        </button>
       </div>
     </div>
   );

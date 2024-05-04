@@ -7,7 +7,7 @@ export default function AdminLayout({ children, }: Readonly<{children: React.Rea
   return (
     <>
       <Nav>
-        <NavLink href="/admin">Dashboard</NavLink>
+        <NavLink href="/admin">Información</NavLink>
         <NavLink href="/admin/productos">Productos</NavLink>
         <NavLink href="/admin/bordados">Bordados</NavLink>
         <NavLink href="/auth/register">Registrar</NavLink>
