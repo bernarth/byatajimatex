@@ -10,7 +10,7 @@ async function getProductsData() {
 
   return {
     products: data._count,
-    totalPrice: (data._sum.precioVentaReal || 0) / 100
+    totalPrice: data._sum.precioVentaReal || 0
   }
 }
 

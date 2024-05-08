@@ -20,7 +20,7 @@ function Producto({ producto }: { producto: ProductoType }) {
         <div>
           <h3 className="text-sm text=gray-700">{producto.nombrePrenda}</h3>
           <p className="mt-1 text-sm text-gray-500">
-            Precio Venta: {formatCurrency(producto.precioVenta)}
+            Precio Venta: {formatCurrency(producto.precioVentaReal)}
           </p>
         </div>
         <button className="-m-2 ml-4 p-2 text-gray-700 hover:text-gray-500">

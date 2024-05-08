@@ -4,7 +4,7 @@ import db from "@/db/db";
 import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
 import fs from "fs/promises";
-import { convertToNumber } from "@/lib/utils";
+import { convertCurrencyToNumber } from "@/lib/utils";
 
 const addProductoSchema = z.object({
   codigoModelo: z.string().min(1),
@@ -48,9 +48,9 @@ export async function addBaseProducto(prevState: unknown, formData: FormData) {
 }
 
 export async function updateProducto(id: string, prevState: unknown, formData: FormData) {
-  formData.set("comision", convertToNumber(formData.get("comision")?.toString() || "0"));
-  formData.set("precioVenta", convertToNumber(formData.get("precioVenta")?.toString() || "0"));
-  formData.set("precioVentaReal", convertToNumber(formData.get("precioVentaReal")?.toString() || "0"));
+  formData.set("comision", convertCurrencyToNumber(formData.get("comision")?.toString() || "0"));
+  formData.set("precioVenta", convertCurrencyToNumber(formData.get("precioVenta")?.toString() || "0"));
+  formData.set("precioVentaReal", convertCurrencyToNumber(formData.get("precioVentaReal")?.toString() || "0"));
   const result = editProductoSchema.safeParse(Object.fromEntries(formData.entries()));
 
   if (result.success === false) {
